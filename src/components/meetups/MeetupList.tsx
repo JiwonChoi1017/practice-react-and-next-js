@@ -1,6 +1,6 @@
 import { Meetup } from "../../types/Meetup";
 import MeetupItem from "./MeetupItem";
-import classes from "./MeetupItem.module.css";
+import classes from "./MeetupList.module.css";
 
 const MeetupList: React.FC<{ meetups: Meetup[] }> = ({ meetups }) => {
   return (
