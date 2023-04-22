@@ -35,11 +35,14 @@ export const getFeaturedEvents = () => {
   return DUMMY_EVENTS.filter((event) => event.isFeatured);
 };
 
-export function getAllEvents() {
+export const getAllEvents = () => {
   return DUMMY_EVENTS;
-}
+};
 
-export function getFilteredEvents(dateFilter) {
+export const getFilteredEvents = (dateFilter: {
+  year: number;
+  month: number;
+}) => {
   const { year, month } = dateFilter;
 
   let filteredEvents = DUMMY_EVENTS.filter((event) => {
@@ -50,8 +53,24 @@ export function getFilteredEvents(dateFilter) {
   });
 
   return filteredEvents;
-}
+};
 
-export function getEventById(id) {
+export const getEventById = (
+  id: string | string[] | undefined
+):
+  | {
+      id: string;
+      title: string;
+      description: string;
+      location: string;
+      date: string;
+      image: string;
+      isFeatured: boolean;
+    }
+  | undefined => {
+  if (typeof id !== "string") {
+    return undefined;
+  }
+
   return DUMMY_EVENTS.find((event) => event.id === id);
-}
+};
