@@ -1,6 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPostData, getPostsFiles } from "@/lib/posts-util";
 
+import Head from "next/head";
 import PostContent from "@/components/posts/post-detail/post-content";
 
 interface Props {
@@ -16,7 +17,15 @@ interface Props {
 }
 
 const PostDetailPage = ({ post }: Props) => {
-  return <PostContent post={post} />;
+  return (
+    <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.excerpt} />
+      </Head>
+      <PostContent post={post} />
+    </>
+  );
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
