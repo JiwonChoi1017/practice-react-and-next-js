@@ -1,6 +1,17 @@
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
+import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
-}
+import { AppProps } from "next/app";
+import Layout from "@/components/layout/layout";
+import { SessionProvider } from "next-auth/react";
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
+  return (
+    <SessionProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </SessionProvider>
+  );
+};
+
+export default MyApp;
